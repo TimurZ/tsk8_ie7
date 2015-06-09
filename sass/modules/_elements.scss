@@ -1,0 +1,32 @@
+// FONTS
+$font-main: Tahoma, Verdana, Segoe, sans-serif;
+$font-bebas-bold: 'bebas_neuebold', arial, helvetica, sans-serif;
+
+// FONT COLORS
+$color-main: #999;
+$color-scndr: #333;
+$color-link: #ff4700;
+
+// BG
+$bg-body: #f3f3f3;
+$bg-nav-hover: #8c8d8d;
+
+@mixin cursor-grab {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+// responsive breakpoints
+// =======================
+@mixin respond-to($name) {
+  @if ($name == width-full) {
+    @media screen and (max-width: 1141px) {@content;}
+  } @else if ($name == tablets) {
+    @media screen and (max-width: 769px) {@content;}
+  } @else if ($name == mobile) {
+    @media screen and (max-width: 519px) {@content;}
+  }
+}

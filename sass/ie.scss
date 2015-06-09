@@ -1,0 +1,122 @@
+header {
+  *z-index: 10;
+}
+
+header nav ul ul li {
+  *display: inline;
+  *zoom: 1;
+}
+
+header nav ul ul .img-holder .img-overlay {
+  visibility: hidden;
+  background: url(../images/bg_menu_IE.png);
+}
+
+header nav ul ul a:hover {
+  .img-overlay {
+    visibility: visible;
+  }
+
+  .text {
+    visibility: hidden;
+  }
+}
+
+.container {
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bg01.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bg01.png', sizingMethod='scale')";
+
+  h1,
+  .sub-ttl,
+  .ttl {
+    *display: inline;
+    *zoom: 1;
+  }
+
+  h1,
+  .sub-ttl {
+    background: url(../images/bg_heading01_IE.png);
+  }
+}
+
+.container {
+  .add-nav {
+    left: 0;
+
+    li {
+      *float: left;
+    }
+
+    ul a:hover {
+      background: #212121;
+    }
+
+    .ttl-nav {
+      &:before,
+      &:after {
+        background: #fff;
+      }
+    }
+  }
+}
+
+.owl-carousel .owl-dots .owl-dot {
+  *display: inline;
+  *zoom: 1;
+
+  span {
+    behavior: url(css/pie/pie.htc);
+    position: relative;
+  }
+}
+
+.middle {
+  *position: relative;
+  *min-height: 0;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bg02.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bg02.png', sizingMethod='scale')";
+
+  .middle-left,
+  .middle-right {
+    *display: inline;
+    *zoom: 1;
+  }
+}
+
+// IE7 PSEUDO CLASSES
+// ===================
+// active menu link
+header nav ul .active > a {
+  *zoom: expression( 
+    this.runtimeStyle.zoom="1",
+    this.appendChild( document.createElement("small") ).className="after"
+   );
+
+  .after {
+    height: 2px;
+    background: #ff4700;
+    position: absolute;
+    right: -13px;
+    bottom: 0;
+    left: -9px;
+  }
+}
+
+header nav ul li:hover > a .after {
+  background: none;
+}
+
+// menu item vertical align
+header nav ul ul .img-holder .img-overlay {
+  *zoom: expression( 
+    this.runtimeStyle.zoom="1",
+    this.appendChild( document.createElement("small") ).className="after"
+   );
+
+  .after {
+    display: inline;
+    zoom: 1;
+    height: 117px;
+    vertical-align: middle;
+  }
+}

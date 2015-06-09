@@ -1,0 +1,30 @@
+// CLEARFIX
+@mixin clrf {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+// TRANSITION
+@mixin transition($transitions...) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin transition-delay($transition-delay...) {
+  -webkit-transition-delay: $transition-delay;
+  -moz-transition-delay: $transition-delay;
+  -o-transition-delay: $transition-delay;
+  transition-delay: $transition-delay;
+}
+
+// BOX-SIZING
+@mixin box-sizing($box) {
+  -webkit-box-sizing: $box;
+  -moz-box-sizing: $box;
+  box-sizing: $box;
+}
