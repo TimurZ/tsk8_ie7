@@ -11,14 +11,6 @@ $color-link: #ff4700;
 $bg-body: #f3f3f3;
 $bg-nav-hover: #8c8d8d;
 
-@mixin cursor-grab {
-  cursor: move;
-  cursor: -webkit-grab;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
-}
-
 // responsive breakpoints
 // =======================
 @mixin respond-to($name) {
@@ -28,5 +20,133 @@ $bg-nav-hover: #8c8d8d;
     @media screen and (max-width: 769px) {@content;}
   } @else if ($name == mobile) {
     @media screen and (max-width: 519px) {@content;}
+  }
+}
+
+@mixin cursor-grab {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+// mobile menu. sub-menu trigger
+.btn-sub-menu-trigger {
+  width: 26px;
+  height: 26px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid $color-link;
+  border-radius: 50%;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  position: absolute;
+  top: 5px;
+  right: 2px;
+
+  @include transition(transform .3s);
+
+  &:after {
+    $arrowSize: 8px;
+    $arrowLineWidth: 2px;
+
+    content: "";
+    width: $arrowSize;
+    height: $arrowSize;
+    border-bottom: $arrowLineWidth solid $color-link;
+    border-left: $arrowLineWidth solid $color-link;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: (-($arrowSize + $arrowLineWidth)/2) auto 0;
+
+    @include rotate(-45deg);
+  }
+}
+
+// sub-menu trigger button 
+// when mobile menu accordion section is open
+.accordion-drop.active {
+  > .btn-sub-menu-trigger {
+    @include rotate(180deg);
+  }
+}
+
+.btn-scroll-to-top {
+  @extend .btn-sub-menu-trigger;
+
+  width: 32px;
+  height: 32px;
+
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 1%;
+  bottom: 25px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  @include transition(visibility 0s 0.3s, opacity .3s, background .3s);
+  @include rotate(180deg);
+
+  @include respond-to(width-full) {
+    display: none;
+  }
+}
+
+// body.scrolled
+.scrolled {
+  .btn-scroll-to-top {
+    visibility: visible;
+    opacity: 0.95;
+
+    @include transition-delay(0s); // visibility
+  }
+}
+
+// no css transform support
+// =========================
+.no-csstransforms {
+  $triangleHeight: 6px;
+  $triangleSide: 8px;
+  $triangleColor: lighten($color-link, 10%);
+
+  .btn-sub-menu-trigger {
+    &:after {
+      width: 0;
+      height: 0;
+      border: none;
+      border-top: $triangleHeight solid $triangleColor;
+      border-right: $triangleSide solid transparent;
+      border-left: $triangleSide solid transparent;
+
+      left: auto;
+      right: 50%;
+      margin: (-$triangleHeight/2) (-$triangleSide) 0 0;
+    }
+  }
+
+  .accordion-drop.active > .btn-sub-menu-trigger:after {
+    border-top: none;
+    border-bottom: $triangleHeight solid $triangleColor;
+  }
+
+  .btn-scroll-to-top {
+    &:after {
+      border-top: none;
+      border-bottom: $triangleHeight solid $color-link;
+    }
+
+    // IE7
+    .after {
+      @extend .btn-scroll-to-top:after;
+    }
   }
 }

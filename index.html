@@ -133,7 +133,15 @@
         </div><!-- /.row -->
       </div><!-- /.info -->
       <div class="add-nav">
-        <span class="ttl-nav"><span>Naše produkty</span></span>
+        <span class="ttl-nav">
+          <!--[if lt IE 8]>
+          <span class="before"></span>
+          <![endif]-->
+          <span>Naše produkty</span>
+          <!--[if lt IE 8]>
+          <span class="after"></span>
+          <![endif]-->
+        </span>
         <ul>
           <li><a href="#">Rolety</a></li><!--
        --><li><a href="#">Markýzy</a></li><!--
@@ -215,9 +223,8 @@
     </div><!-- /.bottom -->
   </footer>
   <div class="mob-menu">
-    <ul>
+    <ul class="accordion">
       <li><a href="#">Produkty</a>
-        <span class="sub-menu-trigger"></span>
         <ul>
           <li><a href="#">
             <span class="img"><img src="images/img01.jpg" alt="menu image"></span><!--
@@ -254,14 +261,35 @@
         </ul>
       </li>
       <li><a href="#">Konfigurátor</a></li>
-      <li><a href="#">novinky</a></li>
+      <li><a href="#">novinky</a>
+        <ul>
+          <li><a href="#">item1</a>
+            <ul>
+              <li><a href="#">sub-item1</a></li>
+              <li><a href="#">sub-item2</a></li>
+              <li><a href="#">sub-item3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">item2</a>
+            <ul>
+              <li><a href="#">sub-item1</a></li>
+              <li><a href="#">sub-item2</a></li>
+              <li><a href="#">sub-item3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">item3</a></li>
+          <li><a href="#">item4</a></li>
+          <li><a href="#">item5</a></li>
+        </ul>
+      </li>
       <li><a href="#">O společnosti</a></li>
       <li><a href="#">Kontakt</a></li>
     </ul>
   </div><!-- /.mob-menu -->
   <div class="overlay"></div><!-- /.overlay -->
-  <script src="js/libs/jquery-1.11.2.min.js"></script>
+  <a href="#" class="btn-scroll-to-top">scroll to top</a>
+  <script src="js/libs/jquery-1.11.3.min.js"></script>
   <script src="js/libs/owl.carousel.min_mdfd.js"></script>
-  <script src="js/scripts/script.js"></script>
+  <script src="js/scripts/script.min.js"></script>
 </body>
 </html>

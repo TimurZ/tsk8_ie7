@@ -42,6 +42,7 @@ header nav ul ul a:hover {
 .container {
   .add-nav {
     left: 0;
+    *position: relative;
 
     li {
       *float: left;
@@ -53,8 +54,13 @@ header nav ul ul a:hover {
 
     .ttl-nav {
       &:before,
-      &:after {
-        background: #fff;
+      &:after,
+      .before, // IE7
+      .after { // IE7
+        background: url(../images/ttl_nav_IE.png) repeat-x;
+
+        *display: inline;
+        *zoom: 1;
       }
     }
   }
@@ -89,8 +95,8 @@ header nav ul ul a:hover {
 header nav ul .active > a {
   *zoom: expression( 
     this.runtimeStyle.zoom="1",
-    this.appendChild( document.createElement("small") ).className="after"
-   );
+    this.appendChild(document.createElement("small")).className="after"
+  );
 
   .after {
     height: 2px;
@@ -110,13 +116,20 @@ header nav ul li:hover > a .after {
 header nav ul ul .img-holder .img-overlay {
   *zoom: expression( 
     this.runtimeStyle.zoom="1",
-    this.appendChild( document.createElement("small") ).className="after"
-   );
+    this.appendChild(document.createElement("small")).className="before"
+  );
 
-  .after {
+  .before {
     display: inline;
     zoom: 1;
     height: 117px;
     vertical-align: middle;
   }
+}
+
+.btn-scroll-to-top {
+  *zoom: expression( 
+    this.runtimeStyle.zoom="1",
+    this.appendChild(document.createElement("small")).className="after"
+  );
 }

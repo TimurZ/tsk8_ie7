@@ -433,7 +433,9 @@ header {
       }
 
       &:before,
-      &:after {
+      &:after,
+      .before, // IE7
+      .after { // IE7
         display: inline-block;
         content: "";
         width: 50%;
@@ -444,11 +446,13 @@ header {
         background: rgba(255,255,255,0.3);
       }
 
-      &:before {
+      &:before,
+      .before { // IE7
         margin-left: -50%;
       }
 
-      &:after {
+      &:after,
+      .after { // IE7
         margin-right: -50%;
       }
     }
@@ -563,9 +567,15 @@ header {
   }
 }
 
-
+// OWL CAROUSEL
+// =============
+// from core owl carousel css file
 .owl-carousel {
   display: none;
+  -webkit-tap-highlight-color: transparent;
+  // position relative and z-index fix webkit rendering fonts issue
+  position: relative;
+  z-index: 1;
 
   &.owl-loaded {
     display: block;
@@ -577,8 +587,8 @@ header {
   }
 
   .owl-stage-outer {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     margin-bottom: 10px;
 
     // fix for flashing background
@@ -591,6 +601,7 @@ header {
   }
 
   .owl-item {
+    position: relative;
     float: left;
   }
 
@@ -914,6 +925,7 @@ footer {
       strong {
         display: inline-block;
         font: 20px/21px $font-bebas-bold;
+        text-transform: uppercase;
         margin: -7px 0 0 11px;
       }
     }
@@ -953,6 +965,8 @@ footer {
   }
 }
 
+// MOBILE MENU
+// ============
 $mobMenuWidth: 250px;
 .mob-menu {
   width: $mobMenuWidth;
@@ -967,7 +981,7 @@ $mobMenuWidth: 250px;
   visibility: hidden;
   overflow-y : auto;
 
-  @include transition(transform .3s ease-out, visibility 0s .3s);
+  @include transition(visibility 0s .3s, transform .3s ease-out);
 
   ul {
     font: 15px/16px $font-main;
@@ -975,63 +989,33 @@ $mobMenuWidth: 250px;
     text-transform: capitalize;
     padding: 10px 10px 30px;
 
-    .sub-menu-trigger {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 30px;
-      height: 36px;
-      cursor: pointer;
-
-      $triangleHeight: 6px;
-      $triangleSide: 9px;
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        margin: (-$triangleHeight/2) (-$triangleSide) 0 0;
-        width: 0;
-        height: 0;
-        border-top: $triangleHeight solid lighten($color-link, 12%);
-        border-right: $triangleSide solid transparent;
-        border-left: $triangleSide solid transparent;
-        border-radius: 2px 2px 0 0;
-      }
-
-      &.active:after {
-        border-top: none;
-        border-bottom: $triangleHeight solid lighten($color-link, 12%);
-      }
-    }
-
     li {
       position: relative;
+    }
 
-      &:hover {
-        > a {
-          color: lighten($color-link, 7%);
-          background: darken(#fff, 2%);
-          text-decoration: none;
-        }
-      }
+    .accordion-drop.active {
+      color: $color-link;
+      background: darken(#fff, 2%);
     }
 
     a {
       display: block;
-      padding: 10px 30px 10px 10px;
+      padding: 10px 30px 10px 5px;
       color: inherit;
       border-bottom: 1px solid lighten($color-main, 20%);
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     ul {
       padding: 0;
-      background: darken(#fff, 1%);
+      background: darken(#fff, 2%);
       display: none;
 
-      a {
-        padding-left: 15px;
-        padding-right: 0;
+      li {
+        padding-left: 10px;
       }
 
       .img {
@@ -1053,7 +1037,8 @@ $mobMenuWidth: 250px;
       .text {
         display: inline-block;
         vertical-align: middle;
-        width: 70%;
+        width: 75%;
+        margin-right: -30px;
       }
     }
   }
@@ -1071,7 +1056,7 @@ $mobMenuWidth: 250px;
   z-index: -15;
   visibility: hidden;
 
-  @include transition(opacity .3s, z-index 0s .3s, visibility 0s .3s);
+  @include transition(visibility 0s .3s, opacity .3s, z-index 0s .3s);
 
   @include translateZ(0);
 }
@@ -1087,7 +1072,7 @@ $mobMenuWidth: 250px;
 
     @include translateX($mobMenuWidth);
 
-    @include transition-delay(0s,0s); // transform, visibility
+    @include transition-delay(0s); // visibility
   }
 
   .overlay {
@@ -1095,7 +1080,7 @@ $mobMenuWidth: 250px;
     z-index: 15;
     visibility: visible;
 
-    @include transition-delay(0s,0s,0s); // opacity, z-index, visibility
+    @include transition-delay(0s); // visibility
   }
 }
 
@@ -1135,7 +1120,7 @@ $mobMenuWidth: 250px;
 
     @include translateX(100%);
 
-    @include transition(transform .3s ease-out, opacity .3s 0s, visibility 0s .3s);
+    @include transition(visibility 0s .3s, opacity .3s, transform .3s ease-out);
 
     li {
       float: right;
@@ -1153,6 +1138,6 @@ $mobMenuWidth: 250px;
 
     @include translateX(0);
 
-    @include transition-delay(0s,0s,0s); // transform opacity visibility
+    @include transition-delay(0s,0s); // visibility opacity
   }
 }

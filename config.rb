@@ -1,5 +1,9 @@
-# Require any additional compass plugins here.
 require 'compass/import-once/activate'
+# Require any additional compass plugins here.
+
+# Sass::MediaQueryCombiner
+# https://github.com/aaronjensen/sass-media_query_combiner
+require 'sass-media_query_combiner'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
