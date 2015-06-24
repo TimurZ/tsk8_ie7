@@ -45,3 +45,6 @@ Temporary Items
 # SASS
 .sass-cache
 *.css.map
+
+# Pixel Perfect folder
+.zPP
