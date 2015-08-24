@@ -69,6 +69,7 @@ header nav ul ul a:hover {
 .owl-carousel .owl-dots .owl-dot {
   *display: inline;
   *zoom: 1;
+  *position: relative;
 
   span {
     behavior: url(css/pie/pie.htc);

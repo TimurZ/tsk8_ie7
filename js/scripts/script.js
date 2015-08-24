@@ -33,8 +33,8 @@ $(document).ready(function() {
       var $mobMenu = $('.mob-menu');
 
       $mobMenu.css('left') < '0' ?
-      $mobMenu.css({'transform': 'translate(0,0)', 'left': '0'}) :
-      $mobMenu.removeAttr('style');
+        $mobMenu.css({'transform': 'translate(0,0)', 'left': '0'}) :
+        $mobMenu.removeAttr('style');
     }
     return false;
   });
@@ -72,7 +72,7 @@ $(document).ready(function() {
   // =========
   (function() {
     var offset = 73,
-        duration = 700;
+        duration = 600;
 
     $(window).on("scroll", function() {
       var fromTop = $(this).scrollTop();
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     // animated scroll to top
     $(".btn-scroll-to-top").on("click", function(e) {
-      $("html, body").animate({scrollTop: 0});
+      $("html, body").animate({scrollTop: 0}, duration);
       e.preventDefault();
     });
   }());

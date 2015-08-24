@@ -11,15 +11,21 @@ $color-link: #ff4700;
 $bg-body: #f3f3f3;
 $bg-nav-hover: #8c8d8d;
 
+// MOBILE MENU
+$mobMenuWidth: 250px;
+
 // responsive breakpoints
 // =======================
+$width-full: 1141px;
+$tablets: 769px;
+$mobile: 519px;
 @mixin respond-to($name) {
   @if ($name == width-full) {
-    @media screen and (max-width: 1141px) {@content;}
+    @media screen and (max-width: $width-full) {@content;}
   } @else if ($name == tablets) {
-    @media screen and (max-width: 769px) {@content;}
+    @media screen and (max-width: $tablets) {@content;}
   } @else if ($name == mobile) {
-    @media screen and (max-width: 519px) {@content;}
+    @media screen and (max-width: $mobile) {@content;}
   }
 }
 

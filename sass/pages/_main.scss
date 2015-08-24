@@ -116,9 +116,7 @@ header {
             opacity: 1;
             visibility: visible;
 
-            @include translateY(0);
-
-            @include transition-delay(0s,0s,0s);
+            @include transition-delay(0s); // visibility
           }
         }
       }
@@ -148,9 +146,7 @@ header {
         visibility: hidden;
         z-index: 10;
 
-        @include translateY(30px);
-
-        @include transition(transform .3s, opacity .3s, visibility 0s .3s);
+        @include transition(visibility 0s .3s, opacity .3s);
 
         li {
           &:first-child {margin-left: 0;}
@@ -204,7 +200,7 @@ header {
 
             @include transition(transform .3s ease-out);
 
-            // vertical align
+            // pseudo-class for vertical alignment text
             &:before {
               content: "";
               display: inline-block;
@@ -260,7 +256,7 @@ header {
 
           @include translateY(0);
 
-          @include transition-delay(0s,0s,0s);
+          @include transition-delay(0s); // visibility
         }
       }
     }
@@ -301,7 +297,7 @@ header {
 
       @include translateY(-30px);
 
-      @include transition(transform .3s, opacity .3s, visibility 0s .3s);
+      @include transition(visibility 0s .3s, transform .3s, opacity .3s);
 
       li {border-color: transparent;}
 
@@ -628,12 +624,9 @@ header {
         background: #bbb;
         border-radius: 50%;
         cursor: pointer;
-
-        &:hover {
-          background: $color-link;
-        }
       }
 
+      &:hover span,
       &.active span {
         background: $color-link;
       }
@@ -710,16 +703,14 @@ header {
 
   .column {
     &:first-child {
-      margin-left: 0;
+      float: left;
     }
 
-    float: left;
+    float: right;
     width: 45%;
-    margin-left: 10%;
 
     @include respond-to(tablets) {
       width: 100%;
-      margin-left: 0;
     }
 
     strong {
@@ -967,7 +958,6 @@ footer {
 
 // MOBILE MENU
 // ============
-$mobMenuWidth: 250px;
 .mob-menu {
   width: $mobMenuWidth;
   background: #fff;
@@ -1138,6 +1128,6 @@ $mobMenuWidth: 250px;
 
     @include translateX(0);
 
-    @include transition-delay(0s,0s); // visibility opacity
+    @include transition-delay(0s); // visibility
   }
 }
